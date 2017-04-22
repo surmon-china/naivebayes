@@ -8,6 +8,16 @@ A Naive-Bayes classifier for node.js
 
 简单说：它可以学习文本和标签，并告诉你新的未知文本应该属于什么标签/分类。
 
+核心公式：
+
+```
+P(C|W1W2...Wn) = P(W1W2...Wn|C) * P(C) / P(W1W2...Wn)
+
+=> P(W1|C) * P(W2|C) ... P(Wn|C)
+
+=> P(W|C)
+```
+
 ## What can I use this for?
 
 You can use this for categorizing any text content into any arbitrary set of **categories**. For example:
