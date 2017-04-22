@@ -9,7 +9,7 @@
     "test": "node test.js"
   },
   "author": "Surmon",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "segment": "^0.1.3"
   },
