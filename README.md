@@ -1,3 +1,11 @@
+[![GitHub issues](https://img.shields.io/github/issues/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/issues)
+[![GitHub forks](https://img.shields.io/github/forks/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/network)
+[![GitHub stars](https://img.shields.io/github/stars/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/stargazers)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/surmon-china/naivebayes.svg?style=flat-square)](https://twitter.com/intent/tweet?url=https://github.com/surmon-china/naivebayes)
+
+[![NPM](https://nodei.co/npm/naivebayes.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/naivebayes/)
+[![NPM](https://nodei.co/npm-dl/naivebayes.png?months=9&height=3)](https://nodei.co/npm/naivebayes/)
+
 # naivebayes
 
 A Naive-Bayes classifier for node.js
