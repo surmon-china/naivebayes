@@ -1,6 +1,6 @@
 
 const fs = require('fs')
-const NaiveBayes = require('../lib/naive-bayes.js')
+const NaiveBayes = require('../dist/naive-bayes.js')
 const classifier = new NaiveBayes()
 
 // 英文学习
