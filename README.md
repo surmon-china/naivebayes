@@ -6,6 +6,8 @@ A Naive-Bayes classifier for node.js
 
 `naivebayes` takes a document (piece of text), and tells you what category that document belongs to.
 
+简单说：它可以学习文本和标签，并告诉你新的未知文本应该属于什么标签/分类。
+
 ## What can I use this for?
 
 You can use this for categorizing any text content into any arbitrary set of **categories**. For example:
@@ -14,18 +16,20 @@ You can use this for categorizing any text content into any arbitrary set of **c
 - is a news article about **technology**, **politics**, or **sports** ?
 - is a piece of text expressing **positive** emotions, or **negative** emotions?
 
+可以用于任何文本学习类项目。
+
 ## Installing
 
 ```
-npm install bayes
+npm install naivebayes --save
 ```
 
 ## Usage
 
 ```javascript
-var NaiveBayes = require('naivebayes')
+const NaiveBayes = require('naivebayes')
 
-var classifier = NaiveBayes()
+const classifier = new NaiveBayes()
 
 // teach it positive phrases
 classifier.learn('amazing, awesome movie!! Yeah!! Oh boy.', 'positive')
@@ -48,7 +52,7 @@ var revivedClassifier = bayes.fromJson(stateJson)
 
 ## API
 
-### `var classifier = bayes([options])`
+### `var classifier = new NaiveBayes([options])`
 
 Returns an instance of a Naive-Bayes Classifier.
 
