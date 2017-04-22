@@ -1,0 +1,15 @@
+{
+  "name": "NaiveBayes.js",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/naive-bayes.js",
+  "scripts": {
+    "dev": "nodemon --exec \"NODE_ENV=development node --harmony test.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Surmon",
+  "license": "ISC",
+  "dependencies": {
+    "nodejieba": "^2.2.4"
+  }
+}
