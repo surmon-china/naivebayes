@@ -1,7 +1,7 @@
 {
-  "name": "NaiveBayes.js",
+  "name": "naivebayes",
   "version": "0.1.0",
-  "description": "",
+  "description": "Naive Bayes Classifier for node.js.",
   "main": "dist/naive-bayes.js",
   "scripts": {
     "dev": "nodemon --exec \"NODE_ENV=development node --harmony test.js\"",
