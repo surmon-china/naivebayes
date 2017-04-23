@@ -106,7 +106,7 @@ const classifier = new NaiveBayes({
         const sanitized = sentence.replace(/[^(a-zA-Z\u4e00-\u9fa50-9_)+\s]/g, ' ')
 
         // 中英文分词
-        return segment.doSegment(sanitized, { simple: true })、
+        return segment.doSegment(sanitized, { simple: true })
     }
 })
 
