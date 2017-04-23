@@ -33,9 +33,7 @@ P(C|D) = P(D|C) * P(C) / P(D)
 
 # Example
 
-生成了Web版便于体验：
-
-[Web experience Page](https://surmon-china.github.io/naivebayes/)
+生成了Web版便于体验：[Web experience Page](https://surmon-china.github.io/naivebayes/)
 
 # What can I use this for?
 
