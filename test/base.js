@@ -96,4 +96,4 @@ console.log('预期：正常，实际：', classifier.categorize('还没使用�
 
 // 保存学习进度
 const classifierJson = classifier.toJson()
-fs.writeFileSync('./examples/classifierJson.json', JSON.stringify(classifierJson))
+fs.writeFileSync('./test/classifierJson.json', JSON.stringify(classifierJson))

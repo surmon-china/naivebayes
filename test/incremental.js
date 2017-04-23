@@ -62,4 +62,4 @@ console.log('预期：正常，实际：', classifier.categorize('马克思主�
 
 // 保存学习进度
 classifierJson = classifier.toJson()
-fs.writeFileSync('./examples/classifierJson.json', JSON.stringify(classifierJson))
+fs.writeFileSync('./test/classifierJson.json', JSON.stringify(classifierJson))
