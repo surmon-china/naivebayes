@@ -1,3 +1,3 @@
-require('./examples/base.js')
-require('./examples/incremental.js')
+require('./test/base.js')
+require('./test/incremental.js')
 console.log('Tested!')
