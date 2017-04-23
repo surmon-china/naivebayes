@@ -31,7 +31,11 @@ P(C|D) = P(D|C) * P(C) / P(D)
 => Wn.forEach(W => P(W|C)
 ```
 
-## What can I use this for?
+# Example
+
+[Web experience Page](https://surmon-china.github.io/naivebayes/)
+
+# What can I use this for?
 
 You can use this for categorizing any text content into any arbitrary set of **categories**. For example:
 
@@ -45,15 +49,15 @@ You can use this for categorizing any text content into any arbitrary set of **c
 - 判断未知文本内容的分类，可以是任何你想要的维度
 - ...
 
-## Installing
+# Installing
 
 ```
 npm install naivebayes --save
 ```
 
-## Usage
+# Usage
 
-### 基本方法
+## 基本方法
 
 ```javascript
 // 导入
@@ -81,7 +85,7 @@ const revivedClassifier = NaiveBayes.fromJson(stateJson)
 
 ```
 
-### 实践场景
+## 实践场景
 
 ```javascript
 const NaiveBayes = require('naivebayes')
@@ -133,9 +137,9 @@ console.log('预期：正常，实际：', classifier.categorize('妈妈，我�
 console.log('预期：正常，实际：', classifier.categorize('马克思主义')) // 正常
 ```
 
-## API
+# API
 
-### Class
+## Class
 
 ```javascript
 const classifier = new NaiveBayes([options])
@@ -158,7 +162,7 @@ const classifier = new NaiveBayes({
 })
 ```
 
-### Learn
+## Learn
 
 ```javascript
 classifier.learn(text, category)
@@ -168,7 +172,7 @@ classifier.learn(text, category)
 
 Teach your classifier what `category` the `text` belongs to. The more you teach your classifier, the more reliable it becomes. It will use what it has learned to identify new documents that it hasn't seen before.
 
-### Categorize
+## Categorize
 
 ```javascript
 classifier.categorize(text)
@@ -188,7 +192,7 @@ classifier.toJson()
 
 Returns the JSON representation of a classifier.
 
-### FromJson
+## FromJson
 
 ```javascript
 const classifier = NaiveBayes.fromJson(jsonObject)
@@ -198,16 +202,16 @@ const classifier = NaiveBayes.fromJson(jsonObject)
 
 Returns a classifier instance from the JSON representation. Use this with the JSON representation obtained from `classifier.toJson()`.
 
-## 相关库
-### 中文分词库：
+# 相关库
+## 中文分词库：
 - [nodejieba](https://github.com/yanyiwu/nodejieba)
 - [node-segment](https://github.com/leizongmin/node-segment)
 - [china-address - 地址分词](https://github.com/booxood/china-address)
 - [word-picker](https://github.com/redhu/word-picker)
 
-### 英文分词库：
+## 英文分词库：
 - [tokenize-text](https://github.com/GitbookIO/tokenize-text)
 - [tokenizer](https://github.com/bredele/tokenizer)
 
-## Credits
+# Credits
 This project was forked from [bayes](https://github.com/ttezel/bayes) by @Tolga Tezel 👍
