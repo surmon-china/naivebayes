@@ -17,6 +17,8 @@ let classifierJson = require('./classifierJson.json')
 
 // 根据已保存的学习记录继续学习
 classifierJson.options = classifierJson.options || {}
+
+// 自定义分词库
 classifierJson.options.tokenizer = sentence => {
 
 	// 仅保留英文、中文、数字
