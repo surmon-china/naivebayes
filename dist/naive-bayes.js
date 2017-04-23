@@ -297,11 +297,12 @@ var NaiveBayes = function () {
       var classifier = new NaiveBayes(json.options);
 
       // override the classifier's state
-      STATE_KEYS.forEach(function (k) {
-        if (!json[k]) {
-          throw new Error('NaiveBayes.fromJson: JSON string is missing an expected property: \'' + k + '\'.');
+      STATE_KEYS.forEach(function (key) {
+        if (json[key] == undefined) {
+          throw new Error('NaiveBayes.fromJson: JSON string is missing an expected property: \'' + key + '\'.');
+        } else {
+          classifier[key] = json[key];
         }
-        classifier[k] = json[k];
       });
 
       return classifier;
