@@ -1,12 +1,13 @@
 {
   "name": "naivebayes",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Naive Bayes Classifier for node.js.",
   "main": "dist/naive-bayes.js",
   "scripts": {
     "dev": "nodemon --exec \"NODE_ENV=development node --harmony test.js\"",
     "build": "babel lib --out-dir dist",
-    "test": "node test.js"
+    "test": "node test.js",
+    "deploy": "git push && npm publish && git push --tags"
   },
   "author": "Surmon",
   "license": "MIT",
