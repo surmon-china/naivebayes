@@ -21,8 +21,6 @@ classifierJson.options.tokenizer = sentence => {
 
 	// 仅保留英文、中文、数字
   const rgxPunctuation = /[^(a-zA-Z\u4e00-\u9fa50-9_)+\s]/g
-
-  // 英文以空格分词，中文不分词，以单个字为单位
   let sanitized = sentence.replace(rgxPunctuation, ' ')
 
   // 中英文分词

@@ -86,7 +86,7 @@ const revivedClassifier = NaiveBayes.fromJson(stateJson)
 ```javascript
 const NaiveBayes = require('naivebayes')
 
-// 使用第三方中文分词库，并自定义分类器
+// 使用第三方中文分词库
 const Segment = require('segment')
 const segment = new Segment()
 
@@ -98,18 +98,15 @@ console.log('测试中文分词库', segment.doSegment('这是一个基于Node.j
 // 测试中文分词库 [ '这是', '一个', '基于', 'Node.js', '的', '中文', '分词', '模块', '。' ]
 
 const classifier = new NaiveBayes({
+
+    // 自定义分词器
     tokenizer(sentence) {
 
         // 仅保留英文、中文、数字
-        const rgxPunctuation = /[^(a-zA-Z\u4e00-\u9fa50-9_)+\s]/g
-
-        // 英文以空格分词，中文不分词，以单个字为单位
-        let sanitized = sentence.replace(rgxPunctuation, ' ')
+        const sanitized = sentence.replace(/[^(a-zA-Z\u4e00-\u9fa50-9_)+\s]/g, ' ')
 
         // 中英文分词
-        sanitized = segment.doSegment(sanitized, { simple: true })
-        // console.log(sanitized)
-        return sanitized
+        return segment.doSegment(sanitized, { simple: true })、
     }
 })
 
