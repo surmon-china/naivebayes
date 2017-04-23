@@ -198,7 +198,7 @@ Returns the JSON representation of a classifier.
 const classifier = NaiveBayes.fromJson(jsonObject)
 ```
 
-导入：将上次的学习成果导入并实例化，格式为标准Json文件
+导入：将上次的学习成果导入并实例化，格式为标准Json；当然你也可以将其他地方已学习的计算结果转化为`NaiveBayes`需要的json格式，然后初始化`NaiveBayes`分类器，json对象的具体格式可以通过[这里的代码](https://github.com/surmon-china/naivebayes/blob/master/lib/naive-bayes.js#L5)一探究竟。
 
 Returns a classifier instance from the JSON representation. Use this with the JSON representation obtained from `classifier.toJson()`.
 
