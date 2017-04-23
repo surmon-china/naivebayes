@@ -184,7 +184,7 @@ classifier.categorize(text)
 
 Returns the `category` it thinks `text` belongs to. Its judgement is based on what you have taught it with **.learn()**.
 
-### ToJson
+## ToJson
 
 ```javascript
 classifier.toJson()
