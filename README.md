@@ -22,7 +22,7 @@ A Naive-Bayes classifier for node.js
 文本：[W1,W2,W3,W4,W5...Wn]
 分类：[C1,C2,C3,C4,C5...Cn]
 
-P(C|D) = P(D|C) * P(C) / P(D)
+**P(C|D) = P(D|C) * P(C) / P(D)**
 
 = P(C|W1W2...Wn) = P(W1W2...Wn|C) * P(C) / P(W1W2...Wn)
 
@@ -92,7 +92,7 @@ Returns an instance of a Naive-Bayes Classifier.
 Pass in an optional `options` object to configure the instance. If you specify a `tokenizer` function in `options`, it will be used as the instance's tokenizer. It receives a (string) `text` argument - this is the string value that is passed in by you when you call `.learn()` or `.categorize()`. It must return an array of tokens.
 
 你可以自定义一个分词器，用于将被学习的文本进行处理后，返回一个数组；
-默认分词器仅保留中文、英文、数字字符，英文按照空格分割词汇，中文按照单个字分割词汇
+默认分词器仅保留中文、英文、数字字符，英文按照空格分割词汇，中文按照单个汉字分割词汇，[代码在此](https://github.com/surmon-china/naivebayes/blob/master/lib/naive-bayes.js#L19)。
 
 Eg.
 
@@ -110,7 +110,7 @@ const classifier = new NaiveBayes({
 classifier.learn(text, category)
 ```
 
-学习：使分类器学习一些新的内容，内容包括文本和文本对应的标签/分类；标签/分类可以是已经存在的；学习的样本越多，分类的准确率越精确。
+学习：使分类器学习一些新的内容，内容包括文本和文本对应的标签/分类；标签/分类可以是已经存在的；学习的样本越多，分类的准确率越高。
 
 Teach your classifier what `category` the `text` belongs to. The more you teach your classifier, the more reliable it becomes. It will use what it has learned to identify new documents that it hasn't seen before.
 
@@ -124,7 +124,7 @@ classifier.categorize(text)
 
 Returns the `category` it thinks `text` belongs to. Its judgement is based on what you have taught it with **.learn()**.
 
-### toJson
+### ToJson
 
 ```javascript
 classifier.toJson()
@@ -134,7 +134,7 @@ classifier.toJson()
 
 Returns the JSON representation of a classifier.
 
-### fromJson
+### FromJson
 
 ```javascript
 const classifier = NaiveBayes.fromJson(jsonObject)
