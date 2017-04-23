@@ -8,7 +8,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 // 用于重置分类器的键
 // keys we use to serialize a classifier's state
-var STATE_KEYS = module.exports.STATE_KEYS = ['categories', 'docCount', 'totalDocuments', 'vocabulary', 'vocabularySize', 'wordCount', 'wordFrequencyCount', 'options'];
+var STATE_KEYS = module.exports.STATE_KEYS = ['categories', 'docCount', 'totalDocuments', 'vocabulary', 'wordCount', 'wordFrequencyCount', 'options'];
 
 /**
  * 默认分词器，英文按照空格分割单词，中文按照字符分割
@@ -56,10 +56,8 @@ var NaiveBayes = function () {
     // 分词器
     this.tokenizer = this.options.tokenizer || defaultTokenizer;
 
-    // 初始化词汇量和其大小
-    // Initialize our vocabulary and its size.
-    this.vocabulary = {};
-    this.vocabularySize = 0;
+    // 词汇表
+    this.vocabulary = [];
 
     // 已学习的文档总数量
     // number of documents we have learned from
@@ -79,7 +77,7 @@ var NaiveBayes = function () {
 
     // 所有分类
     // hashmap of our category names
-    this.categories = {};
+    this.categories = [];
   }
 
   /**
@@ -93,11 +91,11 @@ var NaiveBayes = function () {
   _createClass(NaiveBayes, [{
     key: 'initializeCategory',
     value: function initializeCategory(categoryName) {
-      if (!this.categories[categoryName]) {
+      if (!this.categories.includes(categoryName)) {
         this.docCount[categoryName] = 0;
         this.wordCount[categoryName] = 0;
         this.wordFrequencyCount[categoryName] = {};
-        this.categories[categoryName] = true;
+        this.categories.push(categoryName);
       }
       return this;
     }
@@ -142,11 +140,10 @@ var NaiveBayes = function () {
        */
       Object.keys(frequencyTable).forEach(function (token) {
 
-        // 如果不是已经存在的话，把这个词添加到我们的词汇表中
+        // 将目标词汇添加到词汇表
         // add this word to our vocabulary if not already existing
-        if (!_this.vocabulary[token]) {
-          _this.vocabulary[token] = true;
-          _this.vocabularySize++;
+        if (!_this.vocabulary.includes(token)) {
+          _this.vocabulary.push(token);
         }
 
         var frequencyInText = frequencyTable[token];
@@ -188,7 +185,7 @@ var NaiveBayes = function () {
       var frequencyTable = this.frequencyTable(tokens);
 
       // P(W1|C) * P(W2|C) ... P(Wn|C) * P(C) 的最大值 = 遍历分类，找到一个最大概率
-      Object.keys(this.categories).forEach(function (category) {
+      this.categories.forEach(function (category) {
 
         // P(C)
         var categoryProbability = _this2.docCount[category] / _this2.totalDocuments;
@@ -237,7 +234,7 @@ var NaiveBayes = function () {
       var wordCount = this.wordCount[category];
 
       // 拉普拉斯方程
-      return (wordFrequencyCount + 1) / (wordCount + this.vocabularySize);
+      return (wordFrequencyCount + 1) / (wordCount + this.vocabulary.length);
     }
 
     /**

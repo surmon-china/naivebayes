@@ -203,6 +203,7 @@ Returns a classifier instance from the JSON representation. Use this with the JS
 - [nodejieba](https://github.com/yanyiwu/nodejieba)
 - [node-segment](https://github.com/leizongmin/node-segment)
 - [china-address - 地址分词](https://github.com/booxood/china-address)
+- [word-picker](https://github.com/redhu/word-picker)
 
 ### 英文分词库：
 - [tokenize-text](https://github.com/GitbookIO/tokenize-text)
