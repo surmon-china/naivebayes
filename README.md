@@ -184,7 +184,7 @@ classifier.probabilities(text)
 
 计算概率：返回一个由分类名称和分类对应的概率（计算后的）组成的数组，已经从大到小排序完毕，`classifier.categorize(text)`使用的便是此数组中的最大值。
 
-Returns an array of { category, probability } objects with probability calculated for each category. Its judgement is based on what you have taught it with .learn().
+Returns an array of `{ category, probability }` objects with probability calculated for each category. Its judgement is based on what you have taught it with `.learn()`.
 
 ## Categorize
 
@@ -194,7 +194,7 @@ classifier.categorize(text ,[probability])
 
 分类：确定一段文本所属的分类，`probability`参数用于标识是否返回概率，如果为`true`，则返回一个对象`{ category: xxx, probability: xxx }`，否则直接返回分类。
 
-Returns the `category` it thinks `text` belongs to. Its judgement is based on what you have taught it with **.learn()**.
+Returns the `category` it thinks `text` belongs to. Its judgement is based on what you have taught it with `.learn()`.
 
 ## ToJson
 
