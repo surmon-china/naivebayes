@@ -12,8 +12,10 @@ segment.useDefault()
 console.log('测试中文分词库', segment.doSegment('这是一个基于Node.js的中文分词模块。', { simple: true }))
 // 测试中文分词库 [ '这是', '一个', '基于', 'Node.js', '的', '中文', '分词', '模块', '。' ]
 
-const NaiveBayes = require('../lib/naive-bayes.js')
+const NaiveBayes = require('../dist/naive-bayes.js')
 let classifierJson = require('./classifierJson.json')
+
+console.log(typeof classifierJson)
 
 // 根据已保存的学习记录继续学习
 classifierJson.options = classifierJson.options || {}
@@ -36,7 +38,10 @@ const classifier = NaiveBayes.fromJson(classifierJson)
 console.log('预期：脏话，实际：', classifier.categorize('这是一句脏话吗，我操！'))
 console.log('预期：脏话，实际：', classifier.categorize('呵呵呵，小子，你找死是吧！'))
 console.log('预期：正常，实际：', classifier.categorize('你好，我的中文名是司马萌，英文名字叫Surmon。'))
-console.log('预期：正常，实际：', classifier.categorize('相信是成功的起点，坚持是成功的终点。'))
+console.log('预期：正常，实际：', classifier.categorize('相信是成功的起点，坚持是成功的终点。', true))
+
+// 测试概率
+console.log('预期：正常，实际：', classifier.probabilities('相信是成功的起点，坚持是成功的终点。'))
 
 // 利用词库进行一些复杂的测试
 classifier.learn('你大爷的！', '脏话')
@@ -62,4 +67,4 @@ console.log('预期：正常，实际：', classifier.categorize('马克思主�
 
 // 保存学习进度
 classifierJson = classifier.toJson()
-fs.writeFileSync('./test/classifierJson.json', JSON.stringify(classifierJson))
+fs.writeFileSync('./test/classifierJson.json', classifierJson)

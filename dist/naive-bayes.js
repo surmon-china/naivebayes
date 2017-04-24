@@ -6,8 +6,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// 用于重置分类器的键
-// keys we use to serialize a classifier's state
+/**
+ * 用于重置分类器的键
+ * keys we use to serialize a classifier's state
+ */
 var STATE_KEYS = module.exports.STATE_KEYS = ['categories', 'docCount', 'totalDocuments', 'vocabulary', 'wordCount', 'wordFrequencyCount', 'options'];
 
 /**
@@ -21,22 +23,18 @@ var STATE_KEYS = module.exports.STATE_KEYS = ['categories', 'docCount', 'totalDo
 var defaultTokenizer = function defaultTokenizer(text) {
 
   // 仅保留英文、中文、数字
-  var rgxPunctuation = /[^(a-zA-Z\u4e00-\u9fa50-9_)+\s]/g;
+  var rgxPunctuation = /[^(a-zA-ZA-Яa-я\u4e00-\u9fa50-9_)+\s]/g;
 
   // 英文以空格分词，中文不分词，以单个字为单位
-  var sanitized = text.replace(rgxPunctuation, ' ').replace(/[\u4e00-\u9fa5]/g, function (word) {
+  return text.replace(rgxPunctuation, ' ').replace(/[\u4e00-\u9fa5]/g, function (word) {
     return word + ' ';
   }).split(/\s+/);
-  return sanitized;
 };
 
 /**
  * Naive-Bayes Classifier 朴素贝叶斯
  *
  * This is a naive-bayes classifier that uses Laplace Smoothing.
- *
- * Takes an (optional) options object containing:
- *   - `tokenizer`  => custom tokenization function
  *
  */
 
@@ -59,24 +57,19 @@ var NaiveBayes = function () {
     // 词汇表
     this.vocabulary = [];
 
-    // 已学习的文档总数量
-    // number of documents we have learned from
+    // 已学习的文档总数量, number of documents we have learned from
     this.totalDocuments = 0;
 
-    // 每个分类的文档频率表（即：对于每个分类，文档映射到它的频率）
-    // document frequency table for each of our categories
+    // 分类的词频表, document frequency table for each of our categories
     this.docCount = {};
 
-    // 对于每个分类，总共有多少词汇被映射到它
-    // for each category, how many words total were mapped to it
+    // 分类词总数/概率基数, for each category, how many words total were mapped to it
     this.wordCount = {};
 
-    // 词频统计：对于每个分类，一个给定的词映射到它的频率是多少
-    // word frequency table for each category
+    // 分类的词频统计, word frequency table for each category
     this.wordFrequencyCount = {};
 
-    // 所有分类
-    // hashmap of our category names
+    // 所有分类, hashmap of our category names
     this.categories = [];
   }
 
@@ -114,24 +107,20 @@ var NaiveBayes = function () {
     value: function learn(text, category) {
       var _this = this;
 
-      // 初始化分类（如果这个分类未被创建过）
-      // initialize category data structures if we've never seen this category
+      // 初始化分类, initialize category data structures if we've never seen this category
       this.initializeCategory(category);
 
-      // 更新这个分类映射的语句的数量
+      // 更新这个分类映射的语句的数量（用于计算后面的 P(C) ）
       // update our count of how many documents mapped to this category
       this.docCount[category]++;
 
-      // 更新已学习的文档总数
-      // update the total number of documents we have learned from
+      // 更新已学习的文档总数, update the total number of documents we have learned from
       this.totalDocuments++;
 
-      // 将文本标准化为词汇数组
-      // normalize the text into a word array
+      // 将文本标准化为词汇数组, normalize the text into a word array
       var tokens = this.tokenizer(text);
 
-      // 获取文本中每个标记的频率计数
-      // get a frequency count for each token in the text
+      // 获取文本中每个词汇的词频（用于更新总词频）, get a frequency count for each token in the text
       var frequencyTable = this.frequencyTable(tokens);
 
       /*
@@ -140,23 +129,21 @@ var NaiveBayes = function () {
        */
       Object.keys(frequencyTable).forEach(function (token) {
 
-        // 将目标词汇添加到词汇表
-        // add this word to our vocabulary if not already existing
+        // 将目标词汇添加到词汇表, add this word to our vocabulary if not already existing
         if (!_this.vocabulary.includes(token)) {
           _this.vocabulary.push(token);
         }
 
         var frequencyInText = frequencyTable[token];
 
-        // 在这个分类中更新这个词的频率信息
-        // update the frequency information for this word in this category
+        // 在这个分类中更新这个词的频率信息（更新总词频）, update the frequency information for this word in this category
         if (!_this.wordFrequencyCount[category][token]) {
           _this.wordFrequencyCount[category][token] = frequencyInText;
         } else {
           _this.wordFrequencyCount[category][token] += frequencyInText;
         }
 
-        // 更新我们已经看到映射到这个分类的所有词汇的计数
+        // 更新我们已经看到映射到这个分类的所有词汇的计数（C.wordCount，用于计算词类概率）
         // update the count of all words we have seen mapped to this category
         _this.wordCount[category] += frequencyInText;
       });
@@ -169,31 +156,46 @@ var NaiveBayes = function () {
      * Determine what category `text` belongs to.
      *
      * @param  {String} text
+     * @param  {Boolean} probability
      * @return {String} category
      */
 
   }, {
     key: 'categorize',
-    value: function categorize(text) {
-      var _this2 = this;
+    value: function categorize(text, probability) {
+      return probability ? this.probabilities(text)[0] : this.probabilities(text)[0].category;
+    }
 
-      var maxProbability = -Infinity;
-      var chosenCategory = null;
+    /**
+     * 返回一个数组，数组内部是按照概率从高到低排序的组合
+     * Determine category probabilities for `text`.
+     *
+     * @param  {String} text
+     * @return {Array} probabilities
+     */
+
+  }, {
+    key: 'probabilities',
+    value: function probabilities(text) {
+      var _this2 = this;
 
       // [W1,W2,W3,W4,Wn...]
       var tokens = this.tokenizer(text);
       var frequencyTable = this.frequencyTable(tokens);
 
-      // P(W1|C) * P(W2|C) ... P(Wn|C) * P(C) 的最大值 = 遍历分类，找到一个最大概率
-      this.categories.forEach(function (category) {
+      // 返回由 P(W1|C) * P(W2|C) ... P(Wn|C) * P(C) 组成的数组
+      // iterate thru our categories to calculate the probability for this text
+      return this.categories.map(function (category) {
 
-        // P(C)
+        // start by calculating the overall probability of this category
+        // => out of all documents we've ever looked at, how many were
+        //    mapped to this category
         var categoryProbability = _this2.docCount[category] / _this2.totalDocuments;
 
-        // take the log to avoid underflow
+        //take the log to avoid underflow
         var logProbability = Math.log(categoryProbability);
 
-        // P(W1|C) * P(W2|C) ... P(Wn|C) 
+        // now determine P( w | c ) for each word `w` in the text
         Object.keys(frequencyTable).forEach(function (token) {
 
           var frequencyInText = frequencyTable[token];
@@ -201,17 +203,17 @@ var NaiveBayes = function () {
 
           // console.log('token: %s category: `%s` tokenProbability: %d', token, category, tokenProbability)
 
-          // P(W|C)
+          //determine the log of the P( w | c ) for this word
           logProbability += frequencyInText * Math.log(tokenProbability);
         });
 
-        if (logProbability > maxProbability) {
-          maxProbability = logProbability;
-          chosenCategory = category;
-        }
+        return {
+          category: category,
+          probability: logProbability
+        };
+      }).sort(function (prev, next) {
+        return next.probability - prev.probability;
       });
-
-      return chosenCategory;
     }
 
     /**
@@ -227,13 +229,13 @@ var NaiveBayes = function () {
     key: 'tokenProbability',
     value: function tokenProbability(token, category) {
 
-      // 这个词映射到这个分类的文档中出现过多少次
+      // 分类中目标词汇的词频
       var wordFrequencyCount = this.wordFrequencyCount[category][token] || 0;
 
-      // 曾经被映射到这个分类的所有词汇的计数是多少
+      // 分类总词汇数量
       var wordCount = this.wordCount[category];
 
-      // 拉普拉斯方程
+      // 拉普拉斯方程，防止概率为0，P(W|C)
       return (wordFrequencyCount + 1) / (wordCount + this.vocabulary.length);
     }
 
@@ -250,9 +252,7 @@ var NaiveBayes = function () {
   }, {
     key: 'frequencyTable',
     value: function frequencyTable(tokens) {
-
       var frequencyTable = Object.create(null);
-
       tokens.forEach(function (token) {
         if (!frequencyTable[token]) {
           frequencyTable[token] = 1;
@@ -260,12 +260,24 @@ var NaiveBayes = function () {
           frequencyTable[token]++;
         }
       });
-
       return frequencyTable;
     }
+
+    /**
+      * Dump the classifier's state as a JSON string.
+      * @param {Boolean} Optionally format the serialized JSON output for easier human consumption
+      * @return {String} Representation of the classifier.
+      */
+
   }, {
     key: 'toJson',
-    value: function toJson() {
+    value: function toJson(prettyPrint) {
+      var prettyPrintSpaces = prettyPrint ? 2 : 0;
+      return JSON.stringify(this.toJsonObject(), null, prettyPrintSpaces);
+    }
+  }, {
+    key: 'toJsonObject',
+    value: function toJsonObject() {
       var _this3 = this;
 
       var state = {};
@@ -287,6 +299,14 @@ var NaiveBayes = function () {
   }], [{
     key: 'fromJson',
     value: function fromJson(json) {
+
+      if (typeof json === 'string') {
+        try {
+          json = JSON.parse(json);
+        } catch (err) {
+          throw new Error('Naivebayes.fromJson expects a valid JSON string.');
+        }
+      }
 
       json.options = json.options || {};
 

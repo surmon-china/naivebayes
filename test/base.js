@@ -1,6 +1,6 @@
 
 const fs = require('fs')
-const NaiveBayes = require('../lib/naive-bayes.js')
+const NaiveBayes = require('../dist/naive-bayes.js')
 const classifier = new NaiveBayes()
 
 // 英文学习
@@ -90,10 +90,15 @@ classifier.learn('你大哥拉破车、一直拉到耗子窝、耗子给你两�
 classifier.learn('就你这样子不好好读书，以后做鸡都没人敢要！', '脏话')
 classifier.learn('看你这尖嘴猴腮样，长的那么丑还每天学人家自拍，太恶心人了。', '脏话')
 
+// 获取概率数据
+console.log('预期：脏话，实际：', classifier.probabilities('你妈的，滚！'))
+
 // 判断分类
-console.log('预期：脏话，实际：', classifier.categorize('你妈的，滚！'))
+console.log('预期：脏话，实际：', classifier.categorize('你妈的，滚！', true))
 console.log('预期：正常，实际：', classifier.categorize('还没使用中文分词就分的这么棒！！。'))
 
 // 保存学习进度
 const classifierJson = classifier.toJson()
-fs.writeFileSync('./test/classifierJson.json', JSON.stringify(classifierJson))
+const classifierJsonObject = classifier.toJsonObject()
+console.log(typeof classifierJson, typeof classifierJsonObject)
+fs.writeFileSync('./test/classifierJson.json', classifierJson)
