@@ -11,9 +11,6 @@
   },
   "author": "Surmon",
   "license": "MIT",
-  "dependencies": {
-    "segment": "^0.1.3"
-  },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1"
