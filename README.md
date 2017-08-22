@@ -1,3 +1,4 @@
+[![](https://badge.juejin.im/entry/58fcde90a22b9d0065a3a76a/likes.svg?style=flat-square)](https://juejin.im/entry/58fcde90a22b9d0065a3a76a/detail)
 [![GitHub issues](https://img.shields.io/github/issues/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/issues)
 [![GitHub forks](https://img.shields.io/github/forks/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/network)
 [![GitHub stars](https://img.shields.io/github/stars/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/stargazers)
