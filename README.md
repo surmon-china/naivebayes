@@ -12,7 +12,7 @@
 
 # naivebayes
 
-A Naive-Bayes classifier for node.js
+Naive-Bayes classifier for node.js
 
 适用于Node.js的用于文本学习的朴素贝叶斯算法库。
 
@@ -35,11 +35,11 @@ P(C|D) = P(D|C) * P(C) / P(D)
 => Wn.forEach(W => P(W|C)
 ```
 
-# Example
+## Demo
 
-生成了Web版便于体验：[Web experience Page](https://surmon-china.github.io/naivebayes/)
+生成了Web版便于体验：[Web Example Page](https://surmon-china.github.io/naivebayes/)
 
-# What can I use this for?
+## What can I use this for?
 
 You can use this for categorizing any text content into any arbitrary set of **categories**. For example:
 
@@ -53,15 +53,15 @@ You can use this for categorizing any text content into any arbitrary set of **c
 - 判断未知文本内容的分类，可以是任何你想要的维度
 - ...
 
-# Installing
+## Installing
 
 ```
 npm install naivebayes --save
 ```
 
-# Usage
+## Usage
 
-## 基本方法
+### 基本方法
 
 ```javascript
 // 导入
@@ -89,7 +89,7 @@ const revivedClassifier = NaiveBayes.fromJson(stateJson)
 
 ```
 
-## 实践场景
+### 实践场景
 
 ```javascript
 const NaiveBayes = require('naivebayes')
@@ -145,9 +145,9 @@ console.log('预期：正常，实际：', classifier.probabilities('马克思�
 // [{ category: 'xx', probability: xxx }, { ... }, ...]
 ```
 
-# API
+## API
 
-## Class
+### Class
 
 ```javascript
 const classifier = new NaiveBayes([options])
@@ -170,7 +170,7 @@ const classifier = new NaiveBayes({
 })
 ```
 
-## Learn
+### Learn
 
 ```javascript
 classifier.learn(text, category)
@@ -180,7 +180,7 @@ classifier.learn(text, category)
 
 Teach your classifier what `category` the `text` belongs to. The more you teach your classifier, the more reliable it becomes. It will use what it has learned to identify new documents that it hasn't seen before.
 
-## Probabilities
+### Probabilities
 
 ```javascript
 classifier.probabilities(text)
@@ -190,7 +190,7 @@ classifier.probabilities(text)
 
 Returns an array of `{ category, probability }` objects with probability calculated for each category. Its judgement is based on what you have taught it with `.learn()`.
 
-## Categorize
+### Categorize
 
 ```javascript
 classifier.categorize(text ,[probability])
@@ -200,7 +200,7 @@ classifier.categorize(text ,[probability])
 
 Returns the `category` it thinks `text` belongs to. Its judgement is based on what you have taught it with `.learn()`.
 
-## ToJson
+### ToJson
 
 ```javascript
 classifier.toJson()
@@ -210,7 +210,7 @@ classifier.toJson()
 
 Returns the JSON representation of a classifier. This is the same as `JSON.stringify(classifier.toJsonObject())`.
 
-## ToJsonObject
+### ToJsonObject
 
 ```javascript
 classifier.toJsonObject()
@@ -220,7 +220,7 @@ classifier.toJsonObject()
 
 Returns a JSON-friendly representation of the classifier as an `object`.
 
-## FromJson
+### FromJson
 
 ```javascript
 const classifier = NaiveBayes.fromJson(jsonObject)
@@ -230,16 +230,16 @@ const classifier = NaiveBayes.fromJson(jsonObject)
 
 Returns a classifier instance from the JSON representation. Use this with the JSON representation obtained from `classifier.toJson()`.
 
-# 相关库
-## 中文分词库：
+## 相关库
+### 中文分词库：
 - [nodejieba](https://github.com/yanyiwu/nodejieba)
 - [node-segment](https://github.com/leizongmin/node-segment)
 - [china-address - 地址分词](https://github.com/booxood/china-address)
 - [word-picker](https://github.com/redhu/word-picker)
 
-## 英文分词库：
+### 英文分词库：
 - [tokenize-text](https://github.com/GitbookIO/tokenize-text)
 - [tokenizer](https://github.com/bredele/tokenizer)
 
-# Credits
+## Credits
 This project was forked from [bayes](https://github.com/ttezel/bayes) by @Tolga Tezel 👍
