@@ -1,11 +1,11 @@
 [![GitHub stars](https://img.shields.io/github/stars/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/network)
-[![GitHub issues](https://img.shields.io/github/issues/surmon-china/vue-awesome-swiper.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/issues)
+[![GitHub issues](https://img.shields.io/github/issues/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/issues)
 [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square)](https://github.com/surmon-china/naivebayes)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/surmon-china/naivebayes)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/surmon-china/naivebayes.svg?style=flat-square)](https://twitter.com/intent/tweet?url=https://github.com/surmon-china/naivebayes)
 [![](https://badge.juejin.im/entry/58fcde90a22b9d0065a3a76a/likes.svg?style=flat-square)](https://juejin.im/entry/58fcde90a22b9d0065a3a76a/detail)
-[![GitHub issues](https://img.shields.io/github/issues/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/issues)
+
 
 [![NPM](https://nodei.co/npm/naivebayes.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/naivebayes/)
 [![NPM](https://nodei.co/npm-dl/naivebayes.png?months=9&height=3)](https://nodei.co/npm/naivebayes/)
