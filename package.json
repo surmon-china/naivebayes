@@ -1,18 +1,18 @@
 {
   "name": "naivebayes",
   "version": "0.5.0",
-  "description": "Naive Bayes Classifier for node.js.",
+  "description": "Naive Bayes Classifier for JavaScript.",
   "main": "dist/naive-bayes.js",
+  "author": {
+    "name": "Surmon",
+    "email": "surmon@foxmail.com",
+    "url": "https://surmon.me"
+  },
   "scripts": {
     "dev": "nodemon --exec \"NODE_ENV=development node --harmony test.js\"",
     "build": "babel src --out-dir dist",
     "test": "node test/index.js",
     "deploy": "git push && npm publish && git push --tags"
-  },
-  "author": {
-    "name": "Surmon",
-    "email": "surmon@foxmail.com",
-    "url": "http://surmon.me"
   },
   "private": false,
   "license": "MIT",

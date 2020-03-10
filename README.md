@@ -3,7 +3,6 @@
 [![GitHub issues](https://img.shields.io/github/issues/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/issues)
 [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square)](https://github.com/surmon-china/naivebayes)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/surmon-china/naivebayes)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/surmon-china/naivebayes.svg?style=flat-square)](https://twitter.com/intent/tweet?url=https://github.com/surmon-china/naivebayes)
 [![](https://badge.juejin.im/entry/58fcde90a22b9d0065a3a76a/likes.svg?style=flat-square)](https://juejin.im/entry/58fcde90a22b9d0065a3a76a/detail)
 
 
@@ -12,15 +11,15 @@
 
 # naivebayes
 
-Naive-Bayes classifier for node.js
+Naive-Bayes classifier for JavaScript.
 
-适用于Node.js的用于文本学习的朴素贝叶斯算法库。
+适用于 JavaScript 的用于文本学习的朴素贝叶斯算法库。
 
 `naivebayes` takes a document (piece of text), and tells you what category that document belongs to.
 
-简单说：它可以学习文本和标签，并告诉你新的未知文本应该属于什么标签/分类。
+简单说：**它可以学习文本和标签，并告诉你新的未知文本应该属于什么标签/分类。**
 
-核心公式：
+**核心公式：**
 
 ```
 文本：[W1,W2,W3,W4,W5...Wn]
@@ -35,9 +34,9 @@ P(C|D) = P(D|C) * P(C) / P(D)
 => Wn.forEach(W => P(W|C)
 ```
 
-## Demo
+## Web example
 
-生成了Web版便于体验：[Web Example Page](https://surmon-china.github.io/naivebayes/)
+使用浏览器进行在线分类学习：[Web example page](https://github.surmon.me/naivebayes)
 
 ## What can I use this for?
 
@@ -234,6 +233,7 @@ Returns a classifier instance from the JSON representation. Use this with the JS
 ### 中文分词库：
 - [nodejieba](https://github.com/yanyiwu/nodejieba)
 - [node-segment](https://github.com/leizongmin/node-segment)
+- [segmentit (for javascript)](https://github.com/linonetwo/segmentit)
 - [china-address - 地址分词](https://github.com/booxood/china-address)
 - [word-picker](https://github.com/redhu/word-picker)
 
