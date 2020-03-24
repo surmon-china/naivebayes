@@ -2,23 +2,36 @@
   "name": "naivebayes",
   "version": "0.5.0",
   "description": "Naive Bayes Classifier for JavaScript.",
-  "main": "dist/naive-bayes.js",
   "author": {
     "name": "Surmon",
-    "email": "surmon@foxmail.com",
-    "url": "https://surmon.me"
+    "url": "https://github.com/surmon-china"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surmon-china/naivebayes.git"
+  },
+  "main": "dist/naivebayes.js",
+  "module": "dist/naivebayes.esm.js",
+  "browser": "dist/naivebayes.js",
+  "jsdelivr": "dist/naivebayes.js",
+  "unpkg": "dist/naivebayes.js",
+  "jspm": {
+    "main": "dist/naivebayes.esm.js",
+    "registry": "npm",
+    "format": "esm"
+  },
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
   "scripts": {
-    "dev": "nodemon --exec \"NODE_ENV=development node --harmony test.js\"",
-    "build": "babel src --out-dir dist",
-    "test": "node test/index.js",
-    "deploy": "git push && npm publish && git push --tags"
+    "build": "rm -rf ./dist/* && abc build",
+    "test": "node test/index.js"
   },
   "private": false,
   "license": "MIT",
   "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "@surmon-china/abc-factory": "^0.3.0",
     "segment": "^0.1.3"
   }
 }

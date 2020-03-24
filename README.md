@@ -1,14 +1,14 @@
-[![GitHub stars](https://img.shields.io/github/stars/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/network)
-[![GitHub issues](https://img.shields.io/github/issues/surmon-china/naivebayes.svg?style=flat-square)](https://github.com/surmon-china/naivebayes/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square)](https://github.com/surmon-china/naivebayes)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/surmon-china/naivebayes)
+
+# naivebayes
+
+[![GitHub stars](https://img.shields.io/github/stars/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/stargazers)
+[![npm](https://img.shields.io/npm/v/naivebayes?color=%23c7343a&label=npm&style=for-the-badge)](https://www.npmjs.com/package/naivebayes)
+[![GitHub issues](https://img.shields.io/github/issues-raw/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/blob/master/LICENSE)
 
 
 [![NPM](https://nodei.co/npm/naivebayes.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/naivebayes/)
-[![NPM](https://nodei.co/npm-dl/naivebayes.png?months=9&height=3)](https://nodei.co/npm/naivebayes/)
-
-# naivebayes
 
 Naive-Bayes classifier for JavaScript.
 
@@ -33,9 +33,7 @@ P(C|D) = P(D|C) * P(C) / P(D)
 => Wn.forEach(W => P(W|C)
 ```
 
-## Web example
-
-使用浏览器进行在线分类学习：[Web example page](https://github.surmon.me/naivebayes)
+**[Web example | 使用浏览器进行在线分类学习](https://github.surmon.me/naivebayes)**
 
 ## What can I use this for?
 

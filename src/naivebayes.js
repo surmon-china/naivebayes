@@ -3,7 +3,7 @@
  * 用于重置分类器的键
  * keys we use to serialize a classifier's state
  */
-const STATE_KEYS = module.exports.STATE_KEYS = [
+const STATE_KEYS = [
   'categories', 'docCount', 'totalDocuments', 'vocabulary', 'wordCount', 'wordFrequencyCount', 'options'
 ]
 
@@ -283,6 +283,10 @@ class NaiveBayes {
     })
 
     return classifier
+  }
+
+  static getStateKeys() {
+    return STATE_KEYS
   }
 }
 

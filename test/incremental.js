@@ -12,7 +12,7 @@ segment.useDefault()
 console.log('测试中文分词库', segment.doSegment('这是一个基于Node.js的中文分词模块。', { simple: true }))
 // 测试中文分词库 [ '这是', '一个', '基于', 'Node.js', '的', '中文', '分词', '模块', '。' ]
 
-const NaiveBayes = require('../dist/naive-bayes.js')
+const NaiveBayes = require('../src/naivebayes.js')
 let classifierJson = require('./classifierJson.json')
 
 console.log(typeof classifierJson)
