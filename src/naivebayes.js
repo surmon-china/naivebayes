@@ -51,6 +51,9 @@ class NaiveBayes {
     // 词汇表
     this.vocabulary = []
 
+    // max vocabulary size based on word frequency, default is no limit
+    this.vocabularyLimit = this.options.vocabularyLimit || 0
+
     // 已学习的文档总数量, number of documents we have learned from
     this.totalDocuments = 0
 
@@ -170,7 +173,7 @@ class NaiveBayes {
       // start by calculating the overall probability of this category
       // => out of all documents we've ever looked at, how many were
       //    mapped to this category
-      const categoryProbability = this.docCount[category] / this.totalDocuments
+      const categoryProbability = this.docCount[category] / (this.vocabularyLimit || this.totalDocuments)
 
       //take the log to avoid underflow
       let logProbability = Math.log(categoryProbability)
@@ -225,14 +228,33 @@ class NaiveBayes {
    */
   frequencyTable(tokens) {
     const frequencyTable = Object.create(null)
-    tokens.forEach(token => {
+    for (const token of tokens) {
       if (!frequencyTable[token]) {
         frequencyTable[token] = 1
       } else {
         frequencyTable[token]++
       }
-    })
-    return frequencyTable
+    }
+
+    if (!this.vocabularyLimit || tokens.length <= this.vocabularyLimit)
+      return frequencyTable
+
+    const frequentWords = Object
+      .keys(frequencyTable)
+      .sort(
+        (a, b) => frequencyTable[a] - frequencyTable[b]
+      )
+
+    const newFrequencyTable = {};
+
+    let count = 0;
+    for (const word of frequentWords) {
+      count += frequencyTable[word]
+      newFrequencyTable[word] = frequencyTable[word]
+      if (count >= this.vocabularyLimit) break
+    }
+
+    return newFrequencyTable;
   }
 
 /**

@@ -152,6 +152,7 @@ const classifier = new NaiveBayes([options])
 Returns an instance of a Naive-Bayes Classifier.
 
 Pass in an optional `options` object to configure the instance. If you specify a `tokenizer` function in `options`, it will be used as the instance's tokenizer. It receives a (string) `text` argument - this is the string value that is passed in by you when you call `.learn()` or `.categorize()`. It must return an array of tokens.
+You can also specify a (number) `vocabularyLimit` to reference a max word count where `0` is the default, meaning no limit.
 
 你可以自定义一个分词器，用于将被学习的文本进行处理后，返回一个数组；
 默认分词器仅保留中文、英文、数字字符，英文按照空格分割词汇，中文按照单个汉字分割词汇，[代码在此](https://github.com/surmon-china/naivebayes/blob/master/lib/naive-bayes.js#L21)。
@@ -160,8 +161,8 @@ Eg.
 
 ```javascript
 const classifier = new NaiveBayes({
-    tokenizer(text) { 
-        return text.split(' ') 
+    tokenizer(text) {
+        return text.split(' ')
     }
 })
 ```
