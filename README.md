@@ -2,11 +2,12 @@
 # naivebayes
 
 [![GitHub stars](https://img.shields.io/github/stars/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/stargazers)
+&nbsp;
 [![npm](https://img.shields.io/npm/v/naivebayes?color=%23c7343a&label=npm&style=for-the-badge)](https://www.npmjs.com/package/naivebayes)
+&nbsp;
 [![GitHub issues](https://img.shields.io/github/issues-raw/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes)
+&nbsp;
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/blob/master/LICENSE)
-
 
 [![NPM](https://nodei.co/npm/naivebayes.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/naivebayes/)
 

@@ -1,5 +1,5 @@
 {
-  "name": "naivebayes",
+  "name": "NaiveBayes",
   "version": "0.5.0",
   "description": "Naive Bayes Classifier for JavaScript.",
   "author": {
@@ -10,28 +10,23 @@
     "type": "git",
     "url": "git+https://github.com/surmon-china/naivebayes.git"
   },
-  "main": "dist/naivebayes.js",
+  "main": "dist/naivebayes.umd.js",
   "module": "dist/naivebayes.esm.js",
-  "browser": "dist/naivebayes.js",
-  "jsdelivr": "dist/naivebayes.js",
-  "unpkg": "dist/naivebayes.js",
-  "jspm": {
-    "main": "dist/naivebayes.esm.js",
-    "registry": "npm",
-    "format": "esm"
-  },
+  "browser": "dist/naivebayes.umd.js",
+  "jsdelivr": "dist/naivebayes.umd.js",
+  "unpkg": "dist/naivebayes.umd.js",
   "files": [
     "src",
     "dist/*.js"
   ],
   "scripts": {
-    "build": "rm -rf ./dist/* && abc build",
+    "build": "libundler",
     "test": "node test/index.js"
   },
   "private": false,
   "license": "MIT",
   "devDependencies": {
-    "@surmon-china/abc-factory": "^0.3.0",
+    "@surmon-china/libundler": "^2.2.0",
     "segment": "^0.1.3"
   }
 }
