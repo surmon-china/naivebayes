@@ -2,11 +2,12 @@
 # naivebayes
 
 [![GitHub stars](https://img.shields.io/github/stars/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/stargazers)
+&nbsp;
 [![npm](https://img.shields.io/npm/v/naivebayes?color=%23c7343a&label=npm&style=for-the-badge)](https://www.npmjs.com/package/naivebayes)
+&nbsp;
 [![GitHub issues](https://img.shields.io/github/issues-raw/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/blob/master/LICENSE)
-
+&nbsp;
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](/LICENSE)
 
 [![NPM](https://nodei.co/npm/naivebayes.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/naivebayes/)
 
@@ -98,7 +99,7 @@ const segment = new Segment()
 segment.useDefault()
 
 // 分词测试
-console.log('测试中文分词库', segment.doSegment('这是一个基于Node.js的中文分词模块。', { simple: true }))
+console.log('测试中文分词库', segment.doSegment('这是一个基于 Node.js 的中文分词模块。', { simple: true }))
 // 测试中文分词库 [ '这是', '一个', '基于', 'Node.js', '的', '中文', '分词', '模块', '。' ]
 
 const classifier = new NaiveBayes({
@@ -154,7 +155,7 @@ Returns an instance of a Naive-Bayes Classifier.
 Pass in an optional `options` object to configure the instance. If you specify a `tokenizer` function in `options`, it will be used as the instance's tokenizer. It receives a (string) `text` argument - this is the string value that is passed in by you when you call `.learn()` or `.categorize()`. It must return an array of tokens.
 
 你可以自定义一个分词器，用于将被学习的文本进行处理后，返回一个数组；
-默认分词器仅保留中文、英文、数字字符，英文按照空格分割词汇，中文按照单个汉字分割词汇，[代码在此](https://github.com/surmon-china/naivebayes/blob/master/lib/naive-bayes.js#L21)。
+默认分词器仅保留中文、英文、数字字符，英文按照空格分割词汇，中文按照单个汉字分割词汇，[代码在此](/src/naivebayes.js#L21)。
 
 Eg.
 
@@ -182,7 +183,7 @@ Teach your classifier what `category` the `text` belongs to. The more you teach 
 classifier.probabilities(text)
 ```
 
-计算概率：返回一个由分类名称和分类对应的概率（计算后的）组成的数组，已经从大到小排序完毕，`classifier.categorize(text)`使用的便是此数组中的最大值。
+计算概率：返回一个由分类名称和分类对应的概率（计算后的）组成的数组，已经从大到小排序完毕，`classifier.categorize(text)` 使用的便是此数组中的最大值。
 
 Returns an array of `{ category, probability }` objects with probability calculated for each category. Its judgement is based on what you have taught it with `.learn()`.
 
@@ -222,7 +223,7 @@ Returns a JSON-friendly representation of the classifier as an `object`.
 const classifier = NaiveBayes.fromJson(jsonObject)
 ```
 
-导入：将上次的学习成果导入并实例化，格式为标准Json（字符串/对象）；当然你也可以将其他地方已学习的计算结果转化为`NaiveBayes`需要的json格式，然后初始化`NaiveBayes`分类器，json对象的具体格式可以通过[这里的代码](https://github.com/surmon-china/naivebayes/blob/master/lib/naive-bayes.js#L7)一探究竟。
+导入：将上次的学习成果导入并实例化，格式为标准Json（字符串/对象）；当然你也可以将其他地方已学习的计算结果转化为 `NaiveBayes` 需要的json格式，然后初始化`NaiveBayes` 分类器，json对象的具体格式可以通过[这里的代码](/src/naivebayes.js#L7)一探究竟。
 
 Returns a classifier instance from the JSON representation. Use this with the JSON representation obtained from `classifier.toJson()`.
 
