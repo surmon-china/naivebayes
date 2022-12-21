@@ -3,9 +3,9 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/stargazers)
 &nbsp;
-[![npm](https://img.shields.io/npm/v/naivebayes?color=%23c7343a&label=npm&style=for-the-badge)](https://www.npmjs.com/package/naivebayes)
-&nbsp;
 [![GitHub issues](https://img.shields.io/github/issues-raw/surmon-china/naivebayes.svg?style=for-the-badge)](https://github.com/surmon-china/naivebayes/issues)
+&nbsp;
+[![npm](https://img.shields.io/npm/v/naivebayes?color=%23c7343a&label=npm&style=for-the-badge)](https://www.npmjs.com/package/naivebayes)
 &nbsp;
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](/LICENSE)
 
